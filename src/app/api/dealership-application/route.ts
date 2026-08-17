@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { sendWhatsAppNotification } from "@/lib/notify";
 
 export const runtime = "nodejs";
 
@@ -88,6 +89,8 @@ export async function POST(req: Request) {
   }
 
   const businessName = formData.get("business_name") || "New Applicant";
+  const contactName = formData.get("contact_name") || "";
+  const mobile = formData.get("mobile") || "";
 
   try {
     await resend.emails.send({
@@ -97,6 +100,11 @@ export async function POST(req: Request) {
       html: `<h2>New Dealership Application</h2><table style="border-collapse:collapse;width:100%;font-family:sans-serif;font-size:14px;">${rows}</table>`,
       attachments,
     });
+
+    await sendWhatsAppNotification(
+      `New dealership application from ${businessName}.\nContact: ${contactName}\nMobile: ${mobile}`
+    );
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Dealership application email failed", err);

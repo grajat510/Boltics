@@ -4,12 +4,10 @@ import { useState, type FormEvent } from "react";
 import Image from "next/image";
 import Reveal from "./Reveal";
 
-const QUOTE_EMAIL = "Sales.Aggarwalindustries@gmail.com";
-
 export default function GetQuote() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -18,10 +16,19 @@ export default function GetQuote() {
     const phone = String(data.get("phone") ?? "");
     const content = String(data.get("content") ?? "");
 
-    const subject = `Quote Request from ${name || "Website Visitor"}`;
-    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${content}`;
-    window.location.href = `mailto:${QUOTE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/get-quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, content }),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -112,13 +119,20 @@ export default function GetQuote() {
 
               <button
                 type="submit"
-                className="mt-2 rounded-sm bg-orange px-7 py-4 font-display text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-orange-dark"
+                disabled={status === "sending"}
+                className="mt-2 rounded-sm bg-orange px-7 py-4 font-display text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-orange-dark disabled:opacity-60"
               >
-                Submit
+                {status === "sending" ? "Sending..." : "Submit"}
               </button>
-              {sent && (
+              {status === "sent" && (
                 <p className="text-xs text-ink/55">
-                  Opening your email app to send this to us &mdash; thank you!
+                  Thanks! We&apos;ve received your request and will get back to you within 48
+                  hours.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-xs text-red-600">
+                  Something went wrong. Please try again or call us directly.
                 </p>
               )}
             </div>

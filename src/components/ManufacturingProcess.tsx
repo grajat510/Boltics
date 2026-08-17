@@ -31,10 +31,10 @@ const STEPS = [
   },
   {
     n: "05",
-    title: "Polishing",
-    desc: "Polished to resist corrosion and rust",
-    video: "/videos/process/polishing.mp4",
-    poster: "/images/process/polishing-poster.jpeg",
+    title: "Painting",
+    desc: "Painted to resist corrosion and rust",
+    video: "/videos/process/painting.mp4",
+    poster: "/images/process/painting-poster.jpeg",
   },
   {
     n: "06",
