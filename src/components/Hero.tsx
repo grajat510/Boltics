@@ -1,4 +1,4 @@
-import { Download, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
 
 export default function Hero() {
@@ -53,11 +53,10 @@ export default function Hero() {
               Explore Products <ArrowRight size={16} />
             </a>
             <a
-              href="/catalogue.pdf"
-              download
+              href="/dealership-application"
               className="inline-flex items-center gap-2 rounded-sm border border-white/60 px-7 py-4 font-display text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:border-orange hover:text-orange"
             >
-              Download Catalogue <Download size={16} />
+              Become a Dealer <ArrowRight size={16} />
             </a>
           </div>
         </Reveal>

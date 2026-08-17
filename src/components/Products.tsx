@@ -21,7 +21,7 @@ const PRODUCTS = [
     spec: "8\" – 9\"",
     desc: "Precision Phali blades for accurate sowing, sizes 8\"-9\"",
     img: "/images/products/seed-drill-shovel.png",
-    pad: "p-20",
+    pad: "p-10",
   },
   {
     name: "4 Hole Shovel",
@@ -29,7 +29,7 @@ const PRODUCTS = [
     spec: "4-Hole",
     desc: "Extra holes for stronger, adjustable mounting",
     img: "/images/products/four-hole-shovel.png",
-    pad: "p-20",
+    pad: "p-10",
   },
   {
     name: "Bhartpuri Shovel",
