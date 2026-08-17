@@ -1,41 +1,59 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Ruler } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Ruler } from "lucide-react";
 import Reveal from "./Reveal";
 import SpecModal, { type SpecRow } from "./SpecModal";
 
 const PRODUCTS = [
   {
     name: "Cultivator Shovel",
+    category: "Cultivator Range",
+    spec: "15\" – 17\"",
     desc: "Heat treated, deep countered holes, sizes 15\"-17\". Chamfered range also available",
     img: "/images/products/cultivator-shovel.png",
+    pad: "p-10",
   },
   {
     name: "Seed Drill Shovel",
+    category: "Seed Drill Range",
+    spec: "8\" – 9\"",
     desc: "Precision Phali blades for accurate sowing, sizes 8\"-9\"",
     img: "/images/products/seed-drill-shovel.png",
+    pad: "p-20",
   },
   {
     name: "4 Hole Shovel",
+    category: "Cultivator Range",
+    spec: "4-Hole",
     desc: "Extra holes for stronger, adjustable mounting",
     img: "/images/products/four-hole-shovel.png",
+    pad: "p-20",
   },
   {
     name: "Bhartpuri Shovel",
+    category: "Regional Range",
+    spec: "Traditional",
     desc: "Traditional Bhartpuri style for regional tillage",
     img: "/images/products/bhartpuri-shovel.png",
+    pad: "p-10",
   },
   {
     name: "Duck Foot Shovel",
+    category: "Weed Control Range",
+    spec: "Wide Sweep",
     desc: "Wide sweep design for effective weed control",
     img: "/images/products/duck-foot-shovel.png",
+    pad: "p-10",
   },
   {
     name: "Shovel Bolts",
+    category: "Hardware Range",
+    spec: "M10",
     desc: "Heat treated M10 bolts, corrosion resistant",
     img: "/images/products/shovel-bolts.png",
+    pad: "p-10",
   },
 ] as const;
 
@@ -83,159 +101,168 @@ const SPECS: Record<string, { columns: string[]; rows: SpecRow[] }> = {
   },
 };
 
-const AUTOPLAY_MS = 3500;
+const AUTOPLAY_MS = 4500;
 
 export default function Products() {
-  const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [openSpec, setOpenSpec] = useState<string | null>(null);
 
-  const getStep = () => {
-    const track = trackRef.current;
-    const card = track?.firstElementChild as HTMLElement | null;
-    return card ? card.offsetWidth + 20 : 300;
-  };
+  const count = PRODUCTS.length;
+  const goTo = (i: number) => setActive((i + count) % count);
+  const next = () => goTo(active + 1);
+  const prev = () => goTo(active - 1);
 
-  const scrollBy = (dir: 1 | -1) => {
-    trackRef.current?.scrollBy({ left: dir * getStep(), behavior: "smooth" });
-  };
-
-  const onScroll = () => {
-    const track = trackRef.current;
-    if (!track) return;
-    setActive(Math.round(track.scrollLeft / getStep()));
-  };
-
-  // Auto-advancing carousel, pauses on hover/touch, loops back to the start.
+  // Auto-advancing slider, pauses on hover/touch or while the spec modal is open.
   useEffect(() => {
     if (paused || openSpec) return;
-    const id = setInterval(() => {
-      const track = trackRef.current;
-      if (!track) return;
-      const step = getStep();
-      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - step / 2;
-      track.scrollTo(atEnd ? { left: 0, behavior: "smooth" } : { left: track.scrollLeft + step, behavior: "smooth" });
-    }, AUTOPLAY_MS);
+    const id = setInterval(() => setActive((i) => (i + 1) % count), AUTOPLAY_MS);
     return () => clearInterval(id);
   }, [paused, openSpec]);
 
-  return (
-    <section id="products" className="bg-ink py-20 lg:py-24">
-      <div className="mx-auto max-w-[1440px] px-5 lg:px-10">
-        <Reveal className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="mb-3 font-display text-sm font-semibold uppercase tracking-[0.3em] text-orange">
-              Our Products
-            </p>
-            <h2 className="font-display text-3xl font-semibold uppercase leading-tight text-white sm:text-4xl">
-              Strong. Sturdy. Reliable.
-            </h2>
-          </div>
+  const p = PRODUCTS[active];
+  const prevP = PRODUCTS[(active - 1 + count) % count];
+  const nextP = PRODUCTS[(active + 1) % count];
+  const specs = SPECS[p.name];
 
-          <div className="flex items-center gap-4">
-            <a
-              href="#contact"
-              className="hidden items-center gap-2 font-display text-xs font-semibold uppercase tracking-widest text-white/80 transition-colors hover:text-orange sm:inline-flex"
-            >
-              View All Products <ArrowUpRight size={14} />
-            </a>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => scrollBy(-1)}
-                aria-label="Previous product"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:border-orange hover:bg-orange"
-              >
-                <ArrowLeft size={16} />
-              </button>
-              <button
-                onClick={() => scrollBy(1)}
-                aria-label="Next product"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:border-orange hover:bg-orange"
-              >
-                <ArrowRight size={16} />
-              </button>
-            </div>
-          </div>
+  return (
+    <section id="products" className="bg-white py-20 lg:py-24">
+      <div className="mx-auto max-w-[1440px] px-5 lg:px-10">
+        <Reveal className="text-center">
+          <h2 className="mx-auto max-w-3xl font-display text-2xl font-bold uppercase leading-tight text-ink sm:text-3xl">
+            Shovels Built to Shape the Field Around You
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-ink/55">
+            Every range is heat treated and precision made to tackle your soil conditions and
+            deliver long-term value.
+          </p>
+          <a
+            href="/catalogue.pdf"
+            download
+            className="mt-4 inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-widest text-orange-dark hover:underline"
+          >
+            <ArrowRight size={13} /> Explore Our Full Catalogue
+          </a>
         </Reveal>
 
         <div
-          ref={trackRef}
-          onScroll={onScroll}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onTouchStart={() => setPaused(true)}
           onTouchEnd={() => setPaused(false)}
-          className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-10"
         >
-          {PRODUCTS.map((p, i) => {
-            const specs = SPECS[p.name];
-            return (
-              <Reveal key={p.name} delay={i * 80} className="shrink-0 snap-start">
-                <div className="group relative w-[240px] overflow-hidden rounded-md bg-[#efece6] transition-transform hover:-translate-y-1 sm:w-[260px]">
-                  <a href="#contact" className="block">
-                    <div className="relative aspect-[4/5] w-full bg-white">
-                      <Image
-                        src={p.img}
-                        alt={p.name}
-                        fill
-                        sizes="260px"
-                        className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-5">
-                      <p className="font-display text-sm font-semibold uppercase leading-tight text-ink">
-                        {p.name}
-                      </p>
-                      <p className="mt-1 line-clamp-2 text-xs leading-snug text-ink/55">{p.desc}</p>
-                    </div>
-                  </a>
+          <div className="flex items-center justify-center gap-2 overflow-hidden sm:gap-6 lg:gap-10">
+            <div className="hidden w-32 shrink-0 opacity-15 grayscale sm:block lg:w-44">
+              <div className="relative aspect-square">
+                <Image src={prevP.img} alt="" fill sizes="176px" className="object-contain p-6" aria-hidden />
+              </div>
+            </div>
 
-                  {specs ? (
-                    <button
-                      onClick={() => setOpenSpec(p.name)}
-                      aria-label={`View ${p.name} specifications`}
-                      className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-ink text-white transition-colors hover:bg-orange"
-                    >
-                      <Ruler size={13} />
-                    </button>
-                  ) : (
-                    <a
-                      href="#contact"
-                      aria-label={`Enquire about ${p.name}`}
-                      className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-ink text-white transition-colors hover:bg-orange"
-                    >
-                      <ArrowUpRight size={14} />
-                    </a>
-                  )}
+            <button
+              onClick={prev}
+              aria-label="Previous product"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-ink/50 transition-colors hover:text-orange-dark"
+            >
+              <ChevronLeft size={26} />
+            </button>
 
-                  {specs && (
-                    <button
-                      onClick={() => setOpenSpec(p.name)}
-                      className="absolute bottom-5 right-5 font-display text-[10px] font-semibold uppercase tracking-wider text-orange-dark hover:underline"
-                    >
-                      Sizes
-                    </button>
-                  )}
+            <div className="relative aspect-square w-full max-w-[420px] shrink">
+              <Image
+                key={p.img}
+                src={p.img}
+                alt={p.name}
+                fill
+                sizes="(max-width: 1024px) 60vw, 420px"
+                className={`object-contain ${p.pad} transition-opacity duration-500`}
+                priority={active === 0}
+              />
+            </div>
+
+            <button
+              onClick={next}
+              aria-label="Next product"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-ink/50 transition-colors hover:text-orange-dark"
+            >
+              <ChevronRight size={26} />
+            </button>
+
+            <div className="hidden w-32 shrink-0 opacity-15 grayscale sm:block lg:w-44">
+              <div className="relative aspect-square">
+                <Image src={nextP.img} alt="" fill sizes="176px" className="object-contain p-6" aria-hidden />
+              </div>
+            </div>
+          </div>
+
+          <Reveal key={p.name} className="text-center">
+            <p className="mt-4 font-display text-3xl font-bold uppercase leading-none text-ink sm:text-4xl">
+              {p.spec}
+            </p>
+
+            <div className="mt-4 flex items-center justify-center gap-3 sm:gap-5">
+              <span className="hidden font-display text-xs font-medium uppercase tracking-wider text-ink/35 sm:inline">
+                {prevP.name}
+              </span>
+              <button onClick={prev} aria-label="Previous product" className="text-ink/40 hover:text-orange-dark">
+                <ChevronLeft size={16} />
+              </button>
+              <h3 className="font-display text-base font-bold uppercase tracking-wide text-ink sm:text-lg">
+                {p.category}
+              </h3>
+              <button onClick={next} aria-label="Next product" className="text-ink/40 hover:text-orange-dark">
+                <ChevronRight size={16} />
+              </button>
+              <span className="hidden font-display text-xs font-medium uppercase tracking-wider text-ink/35 sm:inline">
+                {nextP.name}
+              </span>
+            </div>
+
+            <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-ink/55">{p.desc}</p>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-sm bg-orange px-6 py-3 font-display text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-orange-dark"
+              >
+                Enquire Now
+              </a>
+              {specs && (
+                <button
+                  onClick={() => setOpenSpec(p.name)}
+                  className="inline-flex items-center gap-2 rounded-sm border border-ink/20 px-6 py-3 font-display text-sm font-semibold uppercase tracking-wider text-ink transition-colors hover:border-orange-dark hover:text-orange-dark"
+                >
+                  View Sizes <Ruler size={15} />
+                </button>
+              )}
+            </div>
+          </Reveal>
+
+          <div className="mx-auto mt-12 flex max-w-3xl flex-wrap items-start justify-center gap-x-2 gap-y-6">
+            {PRODUCTS.map((item, i) => (
+              <button
+                key={item.name}
+                onClick={() => goTo(i)}
+                className={`flex w-24 flex-col items-center gap-2 rounded-md px-1 py-2 transition-colors sm:w-28 ${
+                  active === i ? "bg-cream" : "hover:bg-cream/60"
+                }`}
+              >
+                <div className="relative h-14 w-full">
+                  <Image src={item.img} alt={item.name} fill sizes="112px" className="object-contain p-1" />
                 </div>
-              </Reveal>
-            );
-          })}
+                <p
+                  className={`text-center font-display text-[10px] font-semibold uppercase leading-tight ${
+                    active === i ? "text-orange-dark" : "text-ink/60"
+                  }`}
+                >
+                  {item.name} <span className="block text-ink/40">({item.spec})</span>
+                </p>
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-2">
-          {PRODUCTS.map((p, i) => (
-            <span
-              key={p.name}
-              className={`h-1.5 rounded-full transition-all ${
-                active === i ? "w-6 bg-orange" : "w-1.5 bg-white/25"
-              }`}
-            />
-          ))}
-        </div>
-
-        <Reveal className="mt-16 border-t border-white/10 pt-10 text-center">
-          <p className="mb-4 font-display text-xs font-semibold uppercase tracking-[0.3em] text-white/50">
+        <Reveal className="mt-16 border-t border-ink/10 pt-10 text-center">
+          <p className="mb-4 font-display text-xs font-semibold uppercase tracking-[0.3em] text-ink/40">
             Also Available
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
@@ -243,11 +270,11 @@ export default function Products() {
               <span key={name} className="flex items-center gap-3">
                 <a
                   href="#contact"
-                  className="font-display text-xs font-medium uppercase tracking-wider text-white/70 transition-colors hover:text-orange"
+                  className="font-display text-xs font-medium uppercase tracking-wider text-ink/60 transition-colors hover:text-orange-dark"
                 >
                   {name}
                 </a>
-                {i < ALSO_AVAILABLE.length - 1 && <span className="text-white/20">&middot;</span>}
+                {i < ALSO_AVAILABLE.length - 1 && <span className="text-ink/15">&middot;</span>}
               </span>
             ))}
           </div>

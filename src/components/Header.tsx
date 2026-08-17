@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { label: "Home", href: "/#home" },
   { label: "About Us", href: "/#about" },
   { label: "Manufacturing", href: "/#manufacturing" },
-  { label: "Gallery", href: "/#gallery" },
   { label: "Products", href: "/#products" },
   { label: "Dealership", href: "/#dealership" },
   { label: "Contact Us", href: "/dealership-application" },
