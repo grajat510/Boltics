@@ -9,6 +9,16 @@
   --color-orange-light: #ff7a3d;
   --color-cream: #f4f1ec;
   --color-cream-dark: #e9e4db;
+
+  /* shadcn/ui-style tokens, mapped to the brand palette above */
+  --primary: var(--color-orange);
+  --primary-foreground: #ffffff;
+  --card: #ffffff;
+  --card-foreground: var(--color-ink);
+  --secondary: var(--color-cream-dark);
+  --secondary-foreground: var(--color-ink);
+  --muted-foreground: rgba(11, 11, 12, 0.55);
+  --border: rgba(11, 11, 12, 0.12);
 }
 
 @theme inline {
@@ -22,6 +32,15 @@
   --color-cream-dark: var(--color-cream-dark);
   --font-display: var(--font-oswald);
   --font-body: var(--font-inter);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
 }
 
 html {

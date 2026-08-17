@@ -1,4 +1,4 @@
-import { ChevronDown, Download, ArrowRight } from "lucide-react";
+import { Download, ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
 
 export default function Hero() {
@@ -61,15 +61,6 @@ export default function Hero() {
             </a>
           </div>
         </Reveal>
-      </div>
-
-      <div className="absolute inset-x-0 bottom-8 z-10 mx-auto flex w-full max-w-[1440px] items-center px-5 lg:px-10">
-        <div className="flex items-center gap-3 text-white/70">
-          <span className="font-display text-xs tracking-widest">01</span>
-          <span className="h-px w-10 bg-white/40" />
-          <span className="font-display text-xs uppercase tracking-widest">Scroll Down</span>
-          <ChevronDown size={16} className="animate-bounce text-orange" />
-        </div>
       </div>
     </section>
   );

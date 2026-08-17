@@ -7,6 +7,7 @@ import Products from "@/components/Products";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Stats from "@/components/Stats";
 import DealerCTA from "@/components/DealerCTA";
+import Certifications from "@/components/Certifications";
 import GetQuote from "@/components/GetQuote";
 import Footer from "@/components/Footer";
 
@@ -23,6 +24,7 @@ export default function Home() {
         <Products />
         <WhyChooseUs />
         <DealerCTA />
+        <Certifications />
         <GetQuote />
       </main>
       <Footer />

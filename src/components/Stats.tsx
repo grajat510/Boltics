@@ -64,14 +64,14 @@ function YearsStat() {
 
 function AcresStat() {
   const { ref, inView } = useInView<HTMLDivElement>();
-  const count = useCountUp(4, inView);
+  const count = useCountUp(5, inView);
 
   return (
     <div ref={ref} className="flex flex-col items-center gap-3 text-center">
       <Target size={30} className="text-orange" strokeWidth={1.5} />
       <p className="font-display text-3xl font-bold text-white sm:text-4xl">{count}M+</p>
       <p className="font-display text-xs uppercase tracking-widest text-white/55">
-        Acres Mission by 2026
+        Acres Mission by 2030
       </p>
     </div>
   );
