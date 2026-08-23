@@ -228,7 +228,7 @@ export default function Products() {
 
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
               <a
-                href="#contact"
+                href="#quote"
                 className="inline-flex items-center gap-2 rounded-sm bg-orange px-6 py-3 font-display text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-orange-dark"
               >
                 Enquire Now

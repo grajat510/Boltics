@@ -47,9 +47,8 @@ export default function Gallery() {
               Made to Fit, Built to Last
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-white/75">
-              Every shovel is heat treated, countered and polished before it leaves Amloh &mdash;
-              ready to bolt straight onto your cultivator. Every piece passes through rigorous
-              inspection before dispatch.
+              Every shovel is heat treated, countered and polished before it leaves our factory.
+              Every piece passes through rigorous inspection before dispatch.
             </p>
             <a
               href="#products"

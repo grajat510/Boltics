@@ -73,12 +73,8 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-white/45 sm:flex-row lg:px-10">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-center px-5 py-6 text-xs text-white/45 lg:px-10">
           <p>&copy; {new Date().getFullYear()} Aggarwal Industries. All Rights Reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-orange">Privacy Policy</a>
-            <a href="#" className="hover:text-orange">Terms &amp; Conditions</a>
-          </div>
         </div>
       </div>
     </footer>
