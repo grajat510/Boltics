@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/55">
             Manufacturer of agricultural implements since 1988 &mdash; cultivator shovels, seed
-            drill shovels and shovel bolts from our Rolling, Forging and Heat Treatment unit.
+            drill shovels and shovel bolts from our rolling, forging and heat treatment unit.
           </p>
           <div className="mt-7 flex items-center gap-3">
             {[
