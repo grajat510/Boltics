@@ -52,7 +52,7 @@ const PRODUCTS = [
     category: "Hardware Range",
     spec: "M10",
     desc: "Heat treated M10 bolts, corrosion resistant",
-    img: "/images/products/shovel-bolts-v2.png",
+    img: "/images/products/shovel-bolts-v3.png",
     pad: "p-10",
   },
   {

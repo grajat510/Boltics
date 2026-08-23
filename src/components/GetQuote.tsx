@@ -47,7 +47,7 @@ export default function GetQuote() {
           </p>
           <div className="relative mt-10 aspect-[16/10] w-full max-w-md overflow-hidden rounded-md bg-ink-soft">
             <Image
-              src="/images/products/shovel-bolts-v2.png"
+              src="/images/products/shovel-bolts-v3.png"
               alt="Aggarwal Industries shovel bolts"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
