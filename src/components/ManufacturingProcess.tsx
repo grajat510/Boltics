@@ -5,8 +5,8 @@ const STEPS = [
     n: "01",
     title: "Raw Material",
     desc: "High grade steel selected for the batch",
-    video: "/videos/process/raw-material.mp4",
-    poster: "/images/process/raw-material-poster.jpeg",
+    video: "/videos/process/raw-material-v2.mp4",
+    poster: "/images/process/raw-material-poster-v2.jpeg",
   },
   {
     n: "02",
@@ -18,9 +18,9 @@ const STEPS = [
   {
     n: "03",
     title: "Forging",
-    desc: "Hot forged to shape in our own unit",
-    video: "/videos/process/forging.mp4",
-    poster: "/images/process/forging-poster.jpeg",
+    desc: "Hot forged to shape in our unit",
+    video: "/videos/process/forging-v5.mp4",
+    poster: "/images/process/forging-poster-v5.jpeg",
   },
   {
     n: "04",
@@ -33,8 +33,8 @@ const STEPS = [
     n: "05",
     title: "Painting",
     desc: "Painted to resist corrosion and rust",
-    video: "/videos/process/painting.mp4",
-    poster: "/images/process/painting-poster.jpeg",
+    video: "/videos/process/painting-v2.mp4",
+    poster: "/images/process/painting-poster-v2.jpeg",
   },
   {
     n: "06",

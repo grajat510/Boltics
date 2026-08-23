@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import PerformanceSection from "@/components/PerformanceSection";
 import ManufacturingProcess from "@/components/ManufacturingProcess";
 import Gallery from "@/components/Gallery";
+import VisionSection from "@/components/VisionSection";
 import Products from "@/components/Products";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Stats from "@/components/Stats";
@@ -23,6 +24,7 @@ export default function Home() {
         <Gallery />
         <Products />
         <WhyChooseUs />
+        <VisionSection />
         <DealerCTA />
         <Certifications />
         <GetQuote />

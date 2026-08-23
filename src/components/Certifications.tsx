@@ -4,9 +4,9 @@ import Reveal from "./Reveal";
 const CERTIFICATIONS = [
   {
     name: "ZED Certified",
-    src: "/images/certifications/zed-certified.png",
-    width: 160,
-    height: 54,
+    src: "/images/certifications/zed-certified-v2.png",
+    width: 110,
+    height: 91,
   },
   {
     name: "MSME Registered",

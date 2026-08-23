@@ -8,11 +8,11 @@ import SpecModal, { type SpecRow } from "./SpecModal";
 
 const PRODUCTS = [
   {
-    name: "Cultivator Shovel",
-    category: "Cultivator Range",
-    spec: "15\" – 17\"",
-    desc: "Heat treated, deep countered holes, sizes 15\"-17\". Chamfered range also available",
-    img: "/images/products/cultivator-shovel.png",
+    name: "Reversible Cultivator Shovel",
+    category: "Reversible Cultivator Shovel",
+    spec: "Reversible",
+    desc: "Heat treated, deep countered holes. Chamfered range also available",
+    img: "/images/products/cultivator-shovel-v2.png",
     pad: "p-10",
   },
   {
@@ -20,7 +20,7 @@ const PRODUCTS = [
     category: "Seed Drill Range",
     spec: "8\" – 9\"",
     desc: "Precision Phali blades for accurate sowing, sizes 8\"-9\"",
-    img: "/images/products/seed-drill-shovel.png",
+    img: "/images/products/seed-drill-shovel-v2.png",
     pad: "p-10",
   },
   {
@@ -28,7 +28,7 @@ const PRODUCTS = [
     category: "Cultivator Range",
     spec: "4-Hole",
     desc: "Extra holes for stronger, adjustable mounting",
-    img: "/images/products/four-hole-shovel.png",
+    img: "/images/products/four-hole-shovel-v2.png",
     pad: "p-10",
   },
   {
@@ -44,7 +44,7 @@ const PRODUCTS = [
     category: "Weed Control Range",
     spec: "Wide Sweep",
     desc: "Wide sweep design for effective weed control",
-    img: "/images/products/duck-foot-shovel.png",
+    img: "/images/products/duck-foot-shovel-v3.png",
     pad: "p-10",
   },
   {
@@ -52,22 +52,29 @@ const PRODUCTS = [
     category: "Hardware Range",
     spec: "M10",
     desc: "Heat treated M10 bolts, corrosion resistant",
-    img: "/images/products/shovel-bolts.png",
+    img: "/images/products/shovel-bolts-v2.png",
+    pad: "p-10",
+  },
+  {
+    name: "Diamond Cut Shovel",
+    category: "Diamond Range",
+    spec: "Diamond Cut",
+    desc: "Diamond-shaped cut for sharp penetration and durability",
+    img: "/images/products/diamond-cut-shovel.png",
+    pad: "p-10",
+  },
+  {
+    name: "Single Edge Shovel",
+    category: "Cultivator Range",
+    spec: "Single Edge",
+    desc: "Single-edge design for focused, efficient tillage",
+    img: "/images/products/single-edge-shovel.png",
     pad: "p-10",
   },
 ] as const;
 
-const ALSO_AVAILABLE = [
-  "Single Edge Shovel",
-  "Shovel – 2 Hole",
-  "Barfi (Diamond) Shovel",
-  "Straight Shovel",
-  "Sangaria Style Shovel",
-  "Jaito Style Shovel",
-];
-
 const SPECS: Record<string, { columns: string[]; rows: SpecRow[] }> = {
-  "Cultivator Shovel": {
+  "Reversible Cultivator Shovel": {
     columns: ["Code", "Length", "Width", "Thickness", "Edge Length", "Weight"],
     rows: [
       { Code: "A1507", Length: "15\"", Width: "75 mm", Thickness: "7 mm", "Edge Length": "110 mm", Weight: "1.0 Kg" },
@@ -260,25 +267,6 @@ export default function Products() {
             ))}
           </div>
         </div>
-
-        <Reveal className="mt-16 border-t border-ink/10 pt-10 text-center">
-          <p className="mb-4 font-display text-xs font-semibold uppercase tracking-[0.3em] text-ink/40">
-            Also Available
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
-            {ALSO_AVAILABLE.map((name, i) => (
-              <span key={name} className="flex items-center gap-3">
-                <a
-                  href="#contact"
-                  className="font-display text-xs font-medium uppercase tracking-wider text-ink/60 transition-colors hover:text-orange-dark"
-                >
-                  {name}
-                </a>
-                {i < ALSO_AVAILABLE.length - 1 && <span className="text-ink/15">&middot;</span>}
-              </span>
-            ))}
-          </div>
-        </Reveal>
       </div>
 
       {openSpec && SPECS[openSpec] && (

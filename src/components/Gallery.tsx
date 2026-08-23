@@ -23,8 +23,8 @@ export default function Gallery() {
         <div className="relative h-[340px] md:h-[520px]">
           <video
             className="absolute inset-0 h-full w-full object-cover"
-            src="/videos/gallery-field.mp4"
-            poster="/images/gallery-field-poster.jpeg"
+            src="/videos/gallery-field-v2.mp4"
+            poster="/images/gallery-field-poster-v2.jpeg"
             autoPlay
             muted
             loop
@@ -48,7 +48,8 @@ export default function Gallery() {
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-white/75">
               Every shovel is heat treated, countered and polished before it leaves Amloh &mdash;
-              ready to bolt straight onto your cultivator.
+              ready to bolt straight onto your cultivator. Every piece passes through rigorous
+              inspection before dispatch.
             </p>
             <a
               href="#products"

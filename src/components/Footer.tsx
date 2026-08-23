@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-[1440px] gap-14 px-5 py-20 lg:grid-cols-[1.2fr_1fr_1fr] lg:gap-16 lg:px-10">
         <div>
           <div className="flex items-center gap-3">
-            <Image src="/images/logo.png" alt="Aggarwal Industries" width={48} height={27} className="h-10 w-auto" />
+            <Image src="/images/logo.png" alt="Aggarwal Industries" width={449} height={273} className="h-14 w-auto" />
             <div className="font-display leading-[0.85] uppercase">
               <div className="text-xl font-semibold tracking-wide text-orange">Aggarwal</div>
               <div className="text-xl font-semibold tracking-[0.15em] text-white">Industries</div>
@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/55">
             Manufacturer of agricultural implements since 1988 &mdash; cultivator shovels, seed
-            drill shovels and shovel bolts from our own Rolling, Forging and Heat Treatment unit.
+            drill shovels and shovel bolts from our Rolling, Forging and Heat Treatment unit.
           </p>
           <div className="mt-7 flex items-center gap-3">
             {[

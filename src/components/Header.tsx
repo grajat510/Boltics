@@ -33,7 +33,7 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-4 lg:px-10">
         <a href="/#home" className="flex items-center gap-3">
-          <Image src="/images/logo.png" alt="Aggarwal Industries" width={44} height={25} className="h-9 w-auto shrink-0" priority />
+          <Image src="/images/logo.png" alt="Aggarwal Industries" width={449} height={273} className="h-12 w-auto shrink-0" priority />
           <div className="font-display leading-[0.85] uppercase">
             <div className="text-lg font-semibold tracking-wide text-orange">Aggarwal</div>
             <div className="text-lg font-semibold tracking-[0.15em] text-white">Industries</div>

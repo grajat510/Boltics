@@ -4,10 +4,10 @@ import Reveal from "./Reveal";
 const FEATURES = [
   { icon: Flame, title: "Heat Treated (Special)", subtitle: "Longer working life" },
   { icon: Gauge, title: "Longer Edge Length", subtitle: "Less load on tractor, saves fuel" },
-  { icon: CircleDot, title: "Deep Countered Holes", subtitle: "Bolt fits properly, no play" },
+  { icon: CircleDot, title: "Deep Countered Holes", subtitle: "Bolt fits properly" },
   { icon: ShieldCheck, title: "Rust-Resistant Polish", subtitle: "Protects against corrosion" },
   { icon: Wrench, title: "Heat Treated Shovel Bolts", subtitle: "Resists breaking under load" },
-  { icon: Factory, title: "Own Rolling & Forging Unit", subtitle: "Consistent quality, on time" },
+  { icon: Factory, title: "Rolling & Forging Unit", subtitle: "Consistent quality, on time" },
 ];
 
 export default function PerformanceSection() {
@@ -22,9 +22,9 @@ export default function PerformanceSection() {
             Low Cost of Cultivation, Per Acre
           </h2>
           <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-white/65">
-            Founded in 1988 by Mr. Dharamvir Goyal, Aggarwal Industries has been supplying
+            Founded in 1988 by Mr. Dharmvir Goyal, Aggarwal Industries has been supplying
             heat-treated cultivator shovels, seed drill shovels and shovel bolts to farmers and
-            dealers across India. We run our own Rolling, Forging and Heat Treatment unit in Amloh, Punjab, so quality
+            dealers across India. We run our Rolling, Forging and Heat Treatment unit in Amloh, Punjab, so quality
             and delivery timelines stay in our control from raw steel to finished shovel.
           </p>
 

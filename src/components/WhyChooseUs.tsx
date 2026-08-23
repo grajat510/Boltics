@@ -8,19 +8,19 @@ import FadeImage from "./FadeImage";
 const ITEMS = [
   {
     title: "Heat Treated, Special Process",
-    desc: "Every shovel goes through a heat treatment cycle in our own unit, giving it a longer working life than untreated stock.",
+    desc: "Every shovel goes through a heat treatment cycle in our unit, giving it a longer working life than untreated stock.",
   },
   {
     title: "Deep Countered Holes",
-    desc: "Countered holes are cut deep so the bolt head sits flush, holding the shovel tight with no play in the field.",
+    desc: "Holes are grooved deeply to sink the bolt head properly, preventing excessive wear of bolt heads and loss of the shovel in the field during cultivation.",
   },
   {
-    title: "Own Rolling, Forging & Heat Treatment Unit",
-    desc: "We roll, forge and heat-treat in-house at Amloh, so quality and delivery timelines stay in our control end to end.",
+    title: "Rolling, Forging & Heat Treatment Unit",
+    desc: "We roll, forge and heat-treat in-house, so quality and delivery timelines stay in our control end to end.",
   },
   {
     title: "Rust-Resistant Polish & Heat Treated Bolts",
-    desc: "A corrosion-resistant polish plus heat-treated M10 shovel bolts keep the whole assembly reliable season after season.",
+    desc: "A corrosion-resistant polish plus heat-treated M10 shovel bolts keep the whole assembly reliable.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function WhyChooseUs() {
             <p className="text-[15px] leading-relaxed text-ink/60">
               Since 1988, Aggarwal Industries has manufactured heat-treated cultivator shovels,
               seed drill shovels and shovel bolts for farmers and dealers across India &mdash;
-              rolled, forged and heat treated in our own Amloh unit.
+              rolled, forged and heat treated in our unit.
             </p>
 
             <div className="mt-8 flex flex-col divide-y divide-ink/10 border-y border-ink/10">
