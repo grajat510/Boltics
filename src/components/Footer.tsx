@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
-import { FacebookIcon, InstagramIcon, YoutubeIcon, LinkedinIcon } from "./SocialIcons";
+import { InstagramIcon } from "./SocialIcons";
 
 const MAP_QUERY = encodeURIComponent("Aggarwal Industries, Annia Road, Amloh, Punjab 147203");
 
@@ -22,10 +22,7 @@ export default function Footer() {
           </p>
           <div className="mt-7 flex items-center gap-3">
             {[
-              { Icon: FacebookIcon, href: "#", label: "Facebook" },
               { Icon: InstagramIcon, href: "https://www.instagram.com/ai.aggarwalindustries/", label: "Instagram" },
-              { Icon: YoutubeIcon, href: "#", label: "YouTube" },
-              { Icon: LinkedinIcon, href: "#", label: "LinkedIn" },
             ].map(({ Icon, href, label }) => (
               <a
                 key={label}
