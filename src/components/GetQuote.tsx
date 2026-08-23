@@ -45,9 +45,9 @@ export default function GetQuote() {
             Tell us your cultivator size, shovel type and quantity &mdash; we&apos;ll get back to
             you with pricing and availability.
           </p>
-          <div className="relative mt-10 aspect-[16/10] w-full max-w-md overflow-hidden rounded-md bg-ink-soft">
+          <div className="relative mt-10 aspect-[16/10] w-full max-w-md overflow-hidden rounded-md bg-white">
             <Image
-              src="/images/products/shovel-bolts-v4.png"
+              src="/images/products/shovel-bolts-v5.png"
               alt="Aggarwal Industries shovel bolts"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
