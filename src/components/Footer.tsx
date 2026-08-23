@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
-import { InstagramIcon } from "./SocialIcons";
 
 const MAP_QUERY = encodeURIComponent("Aggarwal Industries, Annia Road, Amloh, Punjab 147203");
 
@@ -20,22 +19,6 @@ export default function Footer() {
             Manufacturer of agricultural implements since 1988 &mdash; cultivator shovels, seed
             drill shovels and shovel bolts from our rolling, forging and heat treatment unit.
           </p>
-          <div className="mt-7 flex items-center gap-3">
-            {[
-              { Icon: InstagramIcon, href: "https://www.instagram.com/ai.aggarwalindustries/", label: "Instagram" },
-            ].map(({ Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target={href !== "#" ? "_blank" : undefined}
-                rel={href !== "#" ? "noopener noreferrer" : undefined}
-                aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-orange hover:bg-orange hover:text-white"
-              >
-                <Icon size={16} />
-              </a>
-            ))}
-          </div>
         </div>
 
         <div>
