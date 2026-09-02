@@ -47,11 +47,11 @@ export default function GetQuote() {
           </p>
           <div className="relative mt-10 aspect-[16/10] w-full max-w-md overflow-hidden rounded-md bg-white">
             <Image
-              src="/images/products/shovel-bolts-v5.png"
-              alt="Aggarwal Industries shovel bolts"
+              src="/images/products/shovel-mascot.png"
+              alt="Aggarwal Industries muscular shovel mascot flexing"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-contain p-10"
+              className="object-contain p-6"
             />
           </div>
         </Reveal>

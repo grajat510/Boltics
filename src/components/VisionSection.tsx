@@ -118,7 +118,7 @@ export default function VisionSection() {
             Where Vision Meets Expression
           </ContainerAnimated>
           <ContainerAnimated className="mt-5 max-w-lg text-[15px] leading-relaxed text-ink/60">
-            From district Kisan Melas to state-level agricultural exhibitions, Aggarwal
+            From district Kisan Melas to national agricultural exhibitions, Aggarwal
             Industries has showcased its cultivator shovels, seed drill shovels and shovel
             bolts directly to the farmers who put them to work in the field. Every stall is
             a chance to demonstrate what heat-treated, deep-countered manufacturing really

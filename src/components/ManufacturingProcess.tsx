@@ -19,7 +19,7 @@ const STEPS = [
     n: "03",
     title: "Forging",
     desc: "Hot forged to shape in our unit",
-    video: "/videos/process/forging-v5.mp4",
+    video: "/videos/process/forging-v6.mp4",
     poster: "/images/process/forging-poster-v5.jpeg",
   },
   {
@@ -33,7 +33,7 @@ const STEPS = [
     n: "05",
     title: "Painting",
     desc: "Painted to resist corrosion and rust",
-    video: "/videos/process/painting-v2.mp4",
+    video: "/videos/process/painting-v3.mp4",
     poster: "/images/process/painting-poster-v2.jpeg",
   },
   {
