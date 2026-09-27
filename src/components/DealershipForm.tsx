@@ -152,19 +152,28 @@ export default function DealershipForm() {
   const [monthlyPurchase, setMonthlyPurchase] = useState<string[]>([]);
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorDetail, setErrorDetail] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
+    const formElement = e.currentTarget;
     try {
-      const formData = new FormData(e.currentTarget);
+      const formData = new FormData(formElement);
       const res = await fetch("/api/dealership-application", {
         method: "POST",
         body: formData,
       });
-      if (!res.ok) throw new Error("Failed");
+      if (!res.ok) {
+        let detail = `HTTP ${res.status}`;
+        try {
+          const body = await res.json();
+          if (body?.error) detail += `: ${body.error}`;
+        } catch {}
+        throw new Error(detail);
+      }
       setStatus("sent");
-      e.currentTarget.reset();
+      formElement.reset();
       setConstitution([]);
       setMainBusiness([]);
       setTurnover([]);
@@ -173,7 +182,8 @@ export default function DealershipForm() {
       setComputerizedBilling([]);
       setExclusiveTerritory([]);
       setMonthlyPurchase([]);
-    } catch {
+    } catch (err) {
+      setErrorDetail(err instanceof Error ? err.message : String(err));
       setStatus("error");
     }
   };
@@ -433,6 +443,7 @@ export default function DealershipForm() {
         {status === "error" && (
           <p className="text-sm text-red-600">
             Something went wrong sending your application. Please try again or contact us directly.
+            {errorDetail && <span className="block text-xs text-red-400">({errorDetail})</span>}
           </p>
         )}
       </div>

@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { sendWhatsAppNotification } from "@/lib/notify";
 
 export const runtime = "nodejs";
 
-const TO_EMAIL = "Sales.Aggarwalindustries@gmail.com";
+const TO_EMAIL = "sales.aggarwalindustries@gmail.com";
 const FROM_EMAIL = "Aggarwal Industries Dealership <onboarding@resend.dev>";
 
 const FIELD_LABELS: [string, string][] = [
@@ -89,25 +88,21 @@ export async function POST(req: Request) {
   }
 
   const businessName = formData.get("business_name") || "New Applicant";
-  const contactName = formData.get("contact_name") || "";
-  const mobile = formData.get("mobile") || "";
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       subject: `Dealership Application — ${businessName}`,
       html: `<h2>New Dealership Application</h2><table style="border-collapse:collapse;width:100%;font-family:sans-serif;font-size:14px;">${rows}</table>`,
       attachments,
     });
-
-    await sendWhatsAppNotification(
-      `New dealership application from ${businessName}.\nContact: ${contactName}\nMobile: ${mobile}`
-    );
+    if (error) throw new Error(error.message);
 
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Dealership application email failed", err);
-    return NextResponse.json({ error: "Failed to send" }, { status: 500 });
+    const message = err instanceof Error ? err.message : "Failed to send";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { sendWhatsAppNotification } from "@/lib/notify";
 
 export const runtime = "nodejs";
 
-const TO_EMAIL = "Sales.Aggarwalindustries@gmail.com";
+const TO_EMAIL = "sales.aggarwalindustries@gmail.com";
 const FROM_EMAIL = "Aggarwal Industries Website <onboarding@resend.dev>";
 
 export async function POST(req: Request) {
@@ -22,7 +21,7 @@ export async function POST(req: Request) {
   const resend = new Resend(apiKey);
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       replyTo: email,
@@ -36,14 +35,12 @@ export async function POST(req: Request) {
         <p>${String(content).replace(/\n/g, "<br/>")}</p>
       `,
     });
-
-    await sendWhatsAppNotification(
-      `New quote request from ${name}.\nPhone: ${phone}\nEmail: ${email}\n\n${content}`
-    );
+    if (error) throw new Error(error.message);
 
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Get quote email failed", err);
-    return NextResponse.json({ error: "Failed to send" }, { status: 500 });
+    const message = err instanceof Error ? err.message : "Failed to send";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
