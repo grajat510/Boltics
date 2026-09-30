@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Aggarwal Industries | Manufacturer of Agricultural Implements Since 1988",
+  title: "Aggarwal Industries | Manufacturer of Cultivator Shovels",
   description:
     "Aggarwal Industries manufactures cultivator shovels, seed drill shovels and shovel bolts from our Rolling, Forging and Heat Treatment unit in Amloh, Punjab, since 1988.",
 };
